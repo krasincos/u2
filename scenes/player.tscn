@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chr0ipoaov4ap"]
+
+[ext_resource type="Texture2D" uid="uid://usyytnjmwkuh" path="res://art/submarine.png" id="1_3vyb7"]
+
+[node name="Player" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_3vyb7")
