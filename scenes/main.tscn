@@ -327,8 +327,6 @@ texture = ExtResource("3_sugp2")
 12:31/0 = 0
 12:33/0 = 0
 30:33/0 = 0
-32:43/size_in_atlas = Vector2i(5, 2)
-32:43/0 = 0
 37:43/size_in_atlas = Vector2i(4, 2)
 37:43/0 = 0
 42:43/size_in_atlas = Vector2i(2, 2)
@@ -386,8 +384,6 @@ texture = ExtResource("3_sugp2")
 47:6/0 = 0
 51:6/size_in_atlas = Vector2i(3, 3)
 51:6/0 = 0
-55:6/size_in_atlas = Vector2i(3, 3)
-55:6/0 = 0
 60:1/size_in_atlas = Vector2i(3, 4)
 60:1/0 = 0
 60:7/size_in_atlas = Vector2i(3, 4)
@@ -396,6 +392,7 @@ texture = ExtResource("3_sugp2")
 55:10/0 = 0
 60:12/size_in_atlas = Vector2i(3, 1)
 60:12/0 = 0
+60:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -8, 24, -8, 24, 8, -24, 8)
 60:14/size_in_atlas = Vector2i(3, 1)
 60:14/0 = 0
 52:18/size_in_atlas = Vector2i(2, 6)
@@ -417,9 +414,14 @@ texture = ExtResource("3_sugp2")
 13:57/size_in_atlas = Vector2i(2, 3)
 13:57/0 = 0
 13:57/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.877, 7.86432, -15.3824, -23.3951, 15.877, -22.9994, 15.8849, 11.0101, 5.00349, 17.2422, 0.544067, 9.15031, -5.68803, 10.832)
+32:43/size_in_atlas = Vector2i(5, 2)
+32:43/0 = 0
+55:6/size_in_atlas = Vector2i(3, 3)
+55:6/0 = 0
+55:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 
 [sub_resource type="TileSet" id="TileSet_tbgi4"]
-physics_layer_0/collision_layer = 2
+physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_jyhfs")
 
 [node name="Main" type="Node"]
@@ -433,14 +435,29 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.235294)
 
-[node name="Player" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(319, 202)
+[node name="Background" type="TileMapLayer" parent="."]
+position = Vector2(237.556, 517.474)
+rotation = -0.000362412
+scale = Vector2(1.5, 1.5)
+tile_map_data = PackedByteArray("AAAfAAgAAgA5ACAAAAAbAAgAAgA0ACAAAAA=")
+tile_set = SubResource("TileSet_tbgi4")
+collision_enabled = false
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Foreground" type="TileMapLayer" parent="."]
+light_mask = 4
+position = Vector2(95, 207)
 rotation = -0.000181206
-tile_map_data = PackedByteArray("AAAQABcAAgAVACcAAAARABcAAgATACcAAAAPABYAAgADACUAAAANABYAAgAaACUAAAASABcAAgAXACcAAAATABcAAgAVADkAADAUABcAAgAdAD0AADAVABcAAgAdAD0AADAWABcAAgAJADkAADAXABcAAgANACcAAAAZABcAAgAGACcAAAAaABcAAgAVACcAAAAbABcAAgATACcAAAAcABcAAgAGACcAAAAdABcAAgABACMAAAAeABcAAgAVACcAAAAfABcAAgAQACcAAAA=")
+scale = Vector2(1.5, 1.5)
+tile_map_data = PackedByteArray("AAAQABcAAgAVACcAAAARABcAAgATACcAAAASABcAAgAXACcAAAATABcAAgAVADkAADAUABcAAgAdAD0AADAVABcAAgAdAD0AADAWABcAAgAJADkAADAXABcAAgANACcAAAAZABcAAgAGACcAAAAaABcAAgAVACcAAAAbABcAAgATACcAAAAdABcAAgABACMAAAAeABcAAgAVACcAAAAfABcAAgAQACcAAAAhABYAAgAaACUAAAAjABYAAgADACUAAAAcABcAAgANADkAADAPABcAAgANACcAAAAOABcAAgALACcAAAANABcAAgAGACcAAAAVABUAAgA3AAYAAAAVABIAAgA3AAYAAAAVABAAAgA8AAwAAAAlABcAAgAQACcAAAAmABcAAgAVACcAAAAnABcAAgAGACcAAAA=")
 tile_set = SubResource("TileSet_tbgi4")
 
+[node name="Player" parent="." instance=ExtResource("2_0wfyh")]
+z_index = 5
+position = Vector2(703, 616)
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 3
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(320, 199)
+position = Vector2(731, 599)
 zoom = Vector2(2, 2)
